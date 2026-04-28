@@ -19,5 +19,8 @@ public class Waits   {
     public WebElement waitForElementClickable(By ele){
         return wait.until(ExpectedConditions.elementToBeClickable(ele));
     }
+    public WebElement waitForElementClickable(WebElement ele){
+        return wait.until(ExpectedConditions.elementToBeClickable(ele));
+    }
 
 }
