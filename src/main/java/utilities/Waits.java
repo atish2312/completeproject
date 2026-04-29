@@ -9,17 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Waits   {
-    public  WebDriverWait wait;
+public class Waits extends DriverFactory {
+    public WebDriverWait wait;
 
     public Waits(){
         wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(20));
     }
 
-    public WebElement waitForElementClickable(By ele){
+    public  WebElement waitForElementClickable(WebElement ele){
         return wait.until(ExpectedConditions.elementToBeClickable(ele));
     }
-    public WebElement waitForElementClickable(WebElement ele){
+
+    public  WebElement waitForElementClickable(By ele){
         return wait.until(ExpectedConditions.elementToBeClickable(ele));
     }
 

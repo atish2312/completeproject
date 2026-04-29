@@ -18,7 +18,11 @@ public class CheckoutPage extends Waits {
     By getLastName = By.xpath("//input[@placeholder='Last Name']");
     By getZipCode = By.xpath("//input[@placeholder='Zip/Postal Code']");
     By getContinueButton = By.xpath("//input[@type='submit']");
+    By getProductName = By.xpath("//div[@class='inventory_item_name']");
+    By getProductPrice = By.xpath("./ancestor::div[@class='cart_item_label']/div[@class='item_pricebar']/div");
     By getFinishButton = By.xpath("//button[text()='Finish']");
+    By getCheckoutCompletion = By.xpath("//div[@id='checkout_complete_container']/h2");
+
 
 
 
@@ -33,26 +37,31 @@ public class CheckoutPage extends Waits {
         for(WebElement nameOfItems : allItems){
            storedItems.add(nameOfItems.getText());
         }
-
        return storedItems;
     }
     public void clickOnCheckoutButton(){
         waitForElementClickable(getCheckoutIcon).click();
     }
 
-    public String checkDetails(String firstName,String lastName,String postCode){
+    public void checkDetails(String firstName,String lastName,String postCode){
         waitForElementClickable(getFirstName).sendKeys(firstName);
         waitForElementClickable(getLastName).sendKeys(lastName);
         waitForElementClickable(getZipCode).sendKeys(postCode);
         waitForElementClickable(getContinueButton).click();
-        return DriverFactory.getDriver().getCurrentUrl();
+
     }
-    public void checkoutOverview(){
-        
+    public List<String> checkoutOverview(){
+        ArrayList<String> productDetails = new ArrayList<>();
+        List<WebElement>getProduct = DriverFactory.getDriver().findElements(getProductName);
+        for(int i = 0 ; i<getProduct.size();i++){
+            String name = getProduct.get(i).getText();
+            productDetails.add(name);
+        }
+        waitForElementClickable(getFinishButton).click();
+        return productDetails;
     }
-
-
-
-
+    public String getCompletionCheckout(){
+        return DriverFactory.getDriver().findElement(getCheckoutCompletion).getText();
+    }
 
 }
