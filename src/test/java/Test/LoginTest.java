@@ -12,6 +12,6 @@
         public void validationCredentials(){
             LoginPage lp = new LoginPage();
             lp.credentials(ConfigReader.get("username"),ConfigReader.get("password"));
-            Assert.assertEquals(lp.(),"https://www.saucedemo.com/inventory.html");
+            Assert.assertEquals(lp.getPageUrl(),"https://www.saucedemo.com/inventory.html");
         }
     }

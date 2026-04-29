@@ -1,3 +1,7 @@
+package pages;
+
+import driver.DriverFactory;
+import org.openqa.selenium.By;
 import utilities.Waits;
 
 public class LoginPage extends Waits {

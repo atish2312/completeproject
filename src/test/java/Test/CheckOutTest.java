@@ -8,6 +8,7 @@
     import pages.CheckoutPage;
     import pages.LoginPage;
     import pages.ProductAdd;
+    import utilities.ConfigReader;
 
     import java.util.ArrayList;
     import java.util.List;
