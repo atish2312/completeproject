@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Waits extends DriverFactory {
     public WebDriverWait wait;
@@ -22,6 +23,9 @@ public class Waits extends DriverFactory {
 
     public  WebElement waitForElementClickable(By ele){
         return wait.until(ExpectedConditions.elementToBeClickable(ele));
+    }
+    public List<WebElement> waitForElementVisible(By ele){
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ele));
     }
 
 }

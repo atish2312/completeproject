@@ -22,6 +22,7 @@ public class CheckoutPage extends Waits {
     By getProductPrice = By.xpath("./ancestor::div[@class='cart_item_label']/div[@class='item_pricebar']/div");
     By getFinishButton = By.xpath("//button[text()='Finish']");
     By getCheckoutCompletion = By.xpath("//div[@id='checkout_complete_container']/h2");
+    By errorCheckoutOverview = By.xpath("//h3[@data-test='error']");
 
 
 
@@ -62,6 +63,9 @@ public class CheckoutPage extends Waits {
     }
     public String getCompletionCheckout(){
         return DriverFactory.getDriver().findElement(getCheckoutCompletion).getText();
+    }
+    public String getCheckoutOverviewError(){
+        return DriverFactory.getDriver().findElement(errorCheckoutOverview).getText();
     }
 
 }

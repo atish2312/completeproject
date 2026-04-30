@@ -9,6 +9,7 @@
     import pages.LoginPage;
     import pages.ProductAdd;
     import utilities.ConfigReader;
+    import utilities.HelperMethod;
 
     import java.util.ArrayList;
     import java.util.List;
@@ -18,9 +19,11 @@
 
         @Test
         public void verifyCheckout(){
+            HelperMethod.loginCredentials();
             ProductAdd pd = new ProductAdd();
             CheckoutPage chk = new CheckoutPage();
             Assert.assertTrue(pd.selectMultipleProducts(ProductData.getProductData()));
+
             Assert.assertEquals(pd.verifyCheckoutCount(),ProductData.getProductData().size());
 
             Assert.assertEquals(chk.VerifyCheckoutPage(),"https://www.saucedemo.com/cart.html");

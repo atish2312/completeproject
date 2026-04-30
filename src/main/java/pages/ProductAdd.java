@@ -36,7 +36,7 @@
 
         public boolean selectMultipleProducts(Set<String> itemNames){
             int clickCount = 0;
-            List<WebElement> productList = DriverFactory.getDriver().findElements(productNames);
+            List<WebElement> productList = waitForElementVisible(productNames);
             for(WebElement products : productList){
                 String name = products.getText();
                 if(itemNames.contains(name)){

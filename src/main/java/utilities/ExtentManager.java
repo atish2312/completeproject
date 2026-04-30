@@ -1,0 +1,21 @@
+package utilities;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class ExtentManager {
+
+    private static ExtentReports extentReports;
+
+    public static ExtentReports getReport() {
+        if (extentReports == null) {
+            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+            extentReports = new ExtentReports();
+            extentReports.attachReporter(reporter);
+
+
+        }
+        return extentReports;
+    }
+}
+

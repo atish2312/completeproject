@@ -16,24 +16,23 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+import static utilities.ScreenshotUtil.clearScreenshotFolder;
+
 public class BaseTest  {
 
     @BeforeMethod
     public void setupBrowser(){
+        clearScreenshotFolder();
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-
-// Disable automation info
         options.addArguments("--disable-infobars");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-extensions");
 
-// Use fresh/clean profile
         options.addArguments("--guest");
 
         Map<String, Object> prefs = new HashMap<>();
 
-// Disable password manager completely
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
 
@@ -45,13 +44,10 @@ public class BaseTest  {
         DriverFactory.setDriver(driver);
         WebDriverWait wait= new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(20));
         DriverFactory.getDriver().get(ConfigReader.get("url"));
-//        LoginPage lp = new LoginPage();
-//        lp.credentials(ConfigReader.get("username"),ConfigReader.get("password"));
-//        Assert.assertEquals(lp.getPageUrl(),"https://www.saucedemo.com/inventory.html");
     }
 
     @AfterMethod
     public void tearDown(){
-//        DriverFactory.getDriver().quit();
+      DriverFactory.getDriver().quit();
     }
 }
