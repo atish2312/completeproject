@@ -4,11 +4,14 @@ import driver.DriverFactory;
 import org.openqa.selenium.By;
 import utilities.Waits;
 
+import java.sql.Driver;
+
 public class LoginPage extends Waits {
 
     By username = By.xpath("//input[@placeholder='Username']");
     By password = By.xpath("//input[@placeholder='Password']");
     By loginButton = By.xpath("//input[@name='login-button']");
+    By errorMessage = By.xpath("//h3[@data-test='error']");
 
         public  void credentials(String enterUsername , String enterPassword){
             waitForElementClickable(username).sendKeys(enterUsername);
@@ -18,6 +21,9 @@ public class LoginPage extends Waits {
         }
         public String getPageUrl(){
             return   DriverFactory.getDriver().getCurrentUrl();
+        }
+        public String getErrorMessage(){
+            return DriverFactory.getDriver().findElement(errorMessage).getText();
         }
 
 

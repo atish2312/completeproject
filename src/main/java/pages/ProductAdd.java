@@ -15,6 +15,10 @@
         By productNames = By.xpath("//div[@class='inventory_item_description']/div/a");
         By addToCart = By.xpath("./ancestor::div[@class='inventory_item_description']/div[2]/button");
         By countCheckoutButton = By.xpath("//a[@class='shopping_cart_link']/span");
+        By getMenu = By.xpath("//div[@class='bm-burger-button']");
+        By logoutBUtton = By.xpath("//a[text()='Logout']");
+        By checkCountCart = By.xpath("//span[@class='shopping_cart_badge']");
+
 
         public boolean selectSingleProduct(String productName) {
             boolean productClicked = false;
@@ -47,6 +51,19 @@
         public int verifyCheckoutCount(){
         String names = waitForElementClickable(countCheckoutButton).getText();
             return Integer.parseInt(names);
+        }
+
+        public  String productAddWithoutLogin(){
+            return DriverFactory.getDriver().getCurrentUrl();
+
+        }
+        public void setLogoutButton(){
+            waitForElementClickable(getMenu).click();
+            waitForElementClickable(logoutBUtton).click();
+        }
+        public Integer getCountCart(){
+            String count=  DriverFactory.getDriver().findElement(checkCountCart).getText();
+            return Integer.parseInt(count);
         }
 
 

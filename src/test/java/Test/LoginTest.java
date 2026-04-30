@@ -8,7 +8,7 @@
 
     public class LoginTest extends BaseTest {
 
-    //    @Test
+        @Test
         public void validationCredentials(){
             LoginPage lp = new LoginPage();
             lp.credentials(ConfigReader.get("username"),ConfigReader.get("password"));

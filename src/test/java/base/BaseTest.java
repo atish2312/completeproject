@@ -45,9 +45,9 @@ public class BaseTest  {
         DriverFactory.setDriver(driver);
         WebDriverWait wait= new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(20));
         DriverFactory.getDriver().get(ConfigReader.get("url"));
-        LoginPage lp = new LoginPage();
-        lp.credentials(ConfigReader.get("username"),ConfigReader.get("password"));
-        Assert.assertEquals(lp.getPageUrl(),"https://www.saucedemo.com/inventory.html");
+//        LoginPage lp = new LoginPage();
+//        lp.credentials(ConfigReader.get("username"),ConfigReader.get("password"));
+//        Assert.assertEquals(lp.getPageUrl(),"https://www.saucedemo.com/inventory.html");
     }
 
     @AfterMethod
