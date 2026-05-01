@@ -9,10 +9,9 @@ public class ExtentManager {
 
     public static ExtentReports getReport() {
         if (extentReports == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+            ExtentSparkReporter reporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/reports");
             extentReports = new ExtentReports();
             extentReports.attachReporter(reporter);
-
 
         }
         return extentReports;
